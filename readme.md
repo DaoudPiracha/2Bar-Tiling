@@ -47,3 +47,4 @@ Tiling figures of the plane with two bars, Computational Geometry, Volume 5, Iss
 2. Don Sheehy, The Complexity of Domino Tiling Problems, 2005
 3. Horiyama, T., Ito, T., Nakatsuka, K. et al. Complexity of Tiling a Polygon with Trominoes or Bars. Discrete Comput Geom 58, 686–704 (2017). https://doi.org/10.1007/s00454-017-9884-9
 4. Donald E. Knuth: “Dancing links”, 2000, Millenial Perspectives in Computer Science, 2000, 187--214; [http://arxiv.org/abs/cs/0011047 arXiv:cs/0011047].
+5. C. Kenyon and R. Kenyon, "Tiling a polygon with rectangles," Proceedings., 33rd Annual Symposium on Foundations of Computer Science, Pittsburgh, PA, USA, 1992, pp. 610-619, doi: 10.1109/SFCS.1992.267790.
