@@ -1,26 +1,35 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import colors
+
 
 if __name__ == '__main__':
-    m = 6
+    m = 4
     n = 6
     grid = np.zeros((m,n))
-    res = []
-    # for i in range(6):
-    #     res.append(np.arange(10 * i, 10 * (i + 1)))
 
-    res = np.array(res)
-    holes = set([(4,3), (4,4), (4,5)])
+    holes = set([(0,3), (4,4), (4,5)])
     tetrominos = {
         1: [(0,0), (0,1), (0,2)],
         -1: [(0,0), (1,0), (2,0)],
-        # 'HF': [(0,0), (0,-1), (0,-2), (0,-3)],
-        # 'VF': [(0, 0), (-1, 0), (-2, 0), (-3, 0)],
-    }
-
-    print (m*n - len(holes))
-    print (np.sum(grid))
+        }
+    render = True
 
 
+    def render(tiling):
+        cmap = colors.ListedColormap(['red', 'black', 'blue'])
+        bounds = [-1.5, -0.5, 0.5, 1.5]
+        norm = colors.BoundaryNorm(bounds, cmap.N)
+
+        fig, ax = plt.subplots()
+        ax.imshow(tiling, cmap=cmap, norm=norm)
+
+        # draw gridlines
+        ax.grid(which='major', axis='both', linestyle='-', color='k', linewidth=2)
+        ax.set_xticks(np.arange(-0.5, n, 1));
+        ax.set_yticks(np.arange(-0.5, m, 1));
+
+        plt.show()
     def checkCoord(r, c, search_state, grid=grid, holes=holes):
         '''
         checks if given r,c lies within grid and if it is unoccupied
@@ -29,8 +38,6 @@ if __name__ == '__main__':
         if (r, c) in holes: return False
 
         if r >= 0 and r < m and c >= 0 and c < n:
-            # print ('debug', r,c)
-            # print ('debug', grid[r][c], search_state)
             if grid[r][c] == search_state: return True
         return False
 
@@ -43,15 +50,11 @@ if __name__ == '__main__':
         '''
         coords = [[r + i, c + j] for i, j in tetrominos[tetromino]]
         coords_empty = [checkCoord(i, j, search_state=0.) for i, j in coords]
-        # print (coords)
-        # print (coords_empty)
-        # print (all(coords_empty))
 
         if not all(coords_empty): return False
         else:
             for i, j in coords:
                 grid[i][j] = tetromino
-        # print (grid)
         return True
 
     def remove_tetronmino(tetromino, r, c, grid=grid):
@@ -70,43 +73,39 @@ if __name__ == '__main__':
 
 
     def backtrack():
-        # if len(remaining_places) == 0
-        if np.sum(np.abs(grid)) == m*n - len(holes):
-            print ('possible')
-            return True
-        if np.sum(np.abs(grid)) %3 != 0:
-            print('not possible')
-            return False
-        # if containsUnreachable(grid):
-        #     return
 
+        #check if all required tiles covered
+        if np.sum(np.abs(grid)) == m*n - len(holes):
+            return True
+
+        # check if remaining tiles untilable
+        if np.sum(np.abs(grid)) %3 != 0:
+            return False
+        # TODO: Early exit: if a component is not tileable using mod
+        # TODO: Early exit : if component does not have holes, try liner time algorithm
+
+        #TODO: Iterate over remaining empty tiles
         for r in range(m):
             for c in range(n):
                 if grid[r][c] == 0.:
-                    # print (r,c)
                     for t in tetrominos:
-                        # print(r,c)
-                        # print (t)
-                        place_success = place_tetronmino(t, r,c)
-                        if not place_success: continue
-                        # print (grid)
-                        print ('filled', np.sum(np.abs(grid)))
+
+                        placed_tromino = place_tetronmino(t, r,c)
+                        if not placed_tromino: continue
                         if backtrack() == True:
                             return True
                         remove_tetronmino(t,r,c)
-        print ('end reached')
-        print(grid)
-        return False
-    print ('test')
-    print (tetrominos)
 
-    # print (place_tetronmino(1, 0,0))
+        return False
+
+
     print(backtrack())
     print (grid)
-    # (place_tetronmino(1, 0, 0))
-    # print (grid)
+    render(grid)
+    # rendering
 
-    #NOT TESTED YET
+
+
 
 
 
