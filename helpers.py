@@ -4,6 +4,20 @@ from matplotlib import colors
 
 
 def render(tiling):
+    '''
+    tiling: takes input numpy grid st. 0 -> holes/empty
+                                       1 -> vertical bar
+                                       -1 -> horizontal bar
+
+        Shows a colorized grid of tiles and holes.
+        Blue = Vertical Bar
+        Red = Horizontal Bar
+        Black = Hole
+
+        #FIXME: Fix axis numbers in plot
+
+    '''
+
     m, n = tiling.shape
     cmap = colors.ListedColormap(['red', 'black', 'blue'])
     bounds = [-1.5, -0.5, 0.5, 1.5]
