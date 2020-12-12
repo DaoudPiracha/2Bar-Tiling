@@ -14,10 +14,10 @@ concise and easy to adapt to modification, in particular, we should be able to r
 optimize the algorithm by doing a linear time check on a subproblem instance without holes using algorithm in (C.Kenyon, R. Kenyon 1992)
 
 With this in mind, we will attempt to solve the tiling problem using:
-    1. A backtracking based search algorithm. (Brute Force)
-    2. Backtracking with 'early exit' conditions:
-        a. Unreachable tiles i.e a component which is not tileable mod 3
-        b. Linear time calculations on regions without holes (future work)
+1. A backtracking based search algorithm. (Brute Force)
+2. Backtracking with 'early exit' conditions:
+    - Unreachable tiles i.e either the whole grid or individual strongly connect component which are not tileable (implemented)
+    - Linear time calculations on regions without holes (future work)
 
 ### Alternative approaches
 There is an additonal popular approach for this problem. It considers framing 2BAR tiling as an instance of 
