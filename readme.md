@@ -1,6 +1,7 @@
 This is an attempt to solving the two bars tiling problem on a region with holes, s.t each bar is of size 3x1 or 1x3
 
 To use: run 'python3 main.py'. Modify values for grid, holes as required. Rendering output is optional using flag.
+In addiiton, to run tests: 'python3 -m unittest'
 
 ### Previous Work
 It has been shown in (DBRR 1995) that the problem of tiling with two bars of length 3 on a region with holes is NP-Complete. 
