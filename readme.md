@@ -1,7 +1,7 @@
 This is an attempt to solving the two bars tiling problem on a region with holes, s.t each bar is of size 3x1 or 1x3
 
 ### Previous Work
-It has been shown in (DBRR 1995) that the problem of tiling with two bars of length 3 is NP-Complete. 
+It has been shown in (DBRR 1995) that the problem of tiling with two bars of length 3 on a region with holes is NP-Complete. 
 This necessitates the use of a search based approach e.g backtracking. While considering regions with holes, we can 
 additionally optimize using early exits in
 the case of early detection of untileable components. Finally, recent work has shown that we can solve the 2BAR-tiling problem in the case of a 
