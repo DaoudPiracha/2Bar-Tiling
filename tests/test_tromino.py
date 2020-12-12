@@ -54,3 +54,16 @@ class TestTiler(unittest.TestCase):
         out[0:3, 0] = -1.
         self.assertTrue((self.tiler.grid == out).all())
 
+    def testSolverEasy(self):
+        self.assertTrue(self.tiler.backtrack())
+
+    def testSolverImpossibleCheck(self):
+        self.tiler.holes = {(0,0)}
+        self.assertFalse(self.tiler.backtrack())
+
+
+    def testSolverMediumCase(self):
+        self.tiler.grid = np.zeros((4, 6))
+
+        self.tiler.holes = {(0, 3), (1, 3), (2, 3), (3, 3), (4, 3), (4, 5)}
+        self.assertTrue(self.tiler.backtrack())

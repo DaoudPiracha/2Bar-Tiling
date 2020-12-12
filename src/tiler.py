@@ -1,5 +1,5 @@
 import numpy as np
-# from scipy.ndimage.measurements import label
+from scipy.ndimage.measurements import label
 
 class TrominoTiler:
     def __init__(self, grid, holes, render=False):
@@ -59,7 +59,7 @@ class TrominoTiler:
     def get_components(self):
         """
         uses optimized scipy method to find and label
-        connected components in graph
+        connected components in graph, can be done simply using DFS as well
 
         SciPy source: https://stackoverflow.com/questions/46737409/finding-connected-components-in-a-pixel-array
 

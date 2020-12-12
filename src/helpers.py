@@ -27,8 +27,8 @@ def render(tiling):
     ax.imshow(tiling, cmap=cmap, norm=norm)
 
     # draw gridlines
-    ax.grid(which='major', axis='both', linestyle='-', color='k', linewidth=2)
-    ax.set_xticks(np.arange(-0.5, n, 1));
-    ax.set_yticks(np.arange(-0.5, m, 1));
+    ax.grid(which='major', axis='both', linestyle='-', color='k', linewidth=3)
+    ax.set_xticks(np.arange(-0.5, n, 1))
+    ax.set_yticks(np.arange(-0.5, m, 1))
 
     plt.show()
