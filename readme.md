@@ -38,7 +38,7 @@ Some other software optimizations considered:
 
 ### Acknowledgements
 
-Finally, the author deeply thanks the team at Gradient.tech for posing such an interesting problem for their interview. 
+Finally, the author deeply thanks the team at Gradient.tech for motivating such an interesting problem. 
 In particular, this problem has been a great source of entertainment and interest in a strange quarantine experience 
 amid the COVID-19 Pandemic. With links to topology, group theory and other areas of mathematics, this project has been, 
 above all, a fun endeavor in learning.
